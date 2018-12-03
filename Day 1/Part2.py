@@ -14,4 +14,4 @@ def find_repeat(input):
                 line = f.readline()
 
 
-print(find_repeat('input.txt'))
+print(find_repeat('Day 1/input.txt'))

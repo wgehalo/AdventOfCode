@@ -16,4 +16,4 @@ def get_oneOff(input):
                     return(result_string)
 
 
-print(get_oneOff('input.txt'))
+print(get_oneOff('Day 2/input.txt'))

@@ -1,4 +1,4 @@
-with open('input.txt') as f:
+with open('Day 2/input.txt') as f:
     threes = 0
     twos = 0
     line = f.readline()
