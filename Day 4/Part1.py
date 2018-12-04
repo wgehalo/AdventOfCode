@@ -50,8 +50,8 @@ for row in sorted_list:
     if row['action'] == "Guard":
         current_sleep_total = 0
         current_guard_id = row['guard_id']
-        guard_data[current_guard_id] = [0 for x in range(60)]
-        current_guard = guard_data[current_guard_id]
+        if current_guard_id not in guard_data:
+            guard_data[current_guard_id] = [0 for x in range(60)]
     elif row['action'] == 'falls':
         fell_asleep_at = row['dt'].minute
     elif row['action'] == 'wakes':
@@ -60,8 +60,8 @@ for row in sorted_list:
         if current_sleep_total > most_minutes['minutes']:
             most_minutes['minutes'] = current_sleep_total
             most_minutes['guard_id'] = current_guard_id
-        for x in range(fell_asleep_at, time_slept):
-            current_guard[x] = current_guard[x] + 1
+        for x in range(fell_asleep_at, fell_asleep_at + time_slept):
+            guard_data[current_guard_id][x] = guard_data[current_guard_id][x] + 1
 
 print(
     f'Guard  #{most_minutes["guard_id"]} slept the most: {most_minutes["minutes"]}')
